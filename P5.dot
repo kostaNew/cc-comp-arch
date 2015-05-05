@@ -1,5 +1,5 @@
 digraph P5_family{ 
-    label = "Микроархитектура Intel P5"
+    label = "Микроархитектура Intel P5";
     subgraph cluster_0{
         label="Ядра Pentium и PentiumMMX";
         "Pentium" [shape=box];

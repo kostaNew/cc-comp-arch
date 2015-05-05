@@ -1,15 +1,59 @@
-digraph P5_family{ 
-    label = "Векторные регистры"
-    subgraph intel{
-        label="Ядра Pentium и PentiumMMX";
-    }
+digraph Vector_history{ 
+    label = "Векторные регистры";
+    ranksep=.75; //size = "7.5,7.5";
     
-    subgraph cluster_1{
-        label="Ядра Pentium OverDrive";
-    }
+    {
+    node [shape=plaintext];
+    "1996"->"1997"->"1998"->"1999"->"2000";
+    "2000"->"2001"->"2002"->"2003"->"2004";
+    "2004"->"2005"->"2006"->"2007"->"2008";
+    "2008"->"2009"->"2010"->"2011"->"2012";
+    "2012"->"2013"->"2014";
     
-    subgraph cluster_2{
-        label="Ядра Mobile Module Connector (MMC-1)";
-    }
+    }  
+    
+    { rank=same; "1996" "Intel" "AMD"}
+    { rank=same; "1997" "MMX"}
+    { rank=same; "1998" "3DNow!"}
+    { rank=same; "2004" "SSE3"}
+    { rank=same; "2006" "SSSE3"}
+    { rank=same; "1999" "SSE"}
+    { rank=same; "2007" "SSE4"}
+    { rank=same; "2008" /*"AES"*/ "SSE4.2" "SSE4a"}
+    
+    { rank=same; "2000" "SSE2" } 
+    { rank=same; "2007" "SSE4" }
+    { rank=same; "2008" "SSE4.2" /*"AES"*/}
+    { rank=same; "2008" "SSE4a"  }
+    { rank=same; "2011" "SSE5" /*"FMA4"*/  }
+    { rank=same; "2011" "AVX"  }IMCI
+    { rank=same; "2012" "IMCI"  }
+    { rank=same; "2013" "AVX2" /*"FMA3"*/  }
+    
+    "Intel"[shape=box];
+    "AMD"[shape=box];
+    
+    "MMX"[shape=box color=red fillcolor=red style=filled];
+    "3DNow!"[shape=box color=yellow fillcolor=yellow style=filled];
+    "SSE"[shape=box color=yellow fillcolor=yellow style=filled];
+    "SSE2"[shape=box color=green fillcolor=green style=filled];
+    "SSE3"[shape=box color=green fillcolor=green style=filled];
+    "SSSE3"[shape=box color=green fillcolor=green style=filled];
+    "SSE4"[shape=box color=green fillcolor=green style=filled];
+    "SSE4a"[shape=box color=green fillcolor=green style=filled];
+    "SSE4.2"[shape=box color=green fillcolor=green style=filled];
+    "SSE5"[shape=box color=green fillcolor=green style=filled];
+    "AVX"[shape=box color=green fillcolor=green style=filled];
+    "IMCI"[shape=box color=green fillcolor=green style=filled];
+    "AVX2"[shape=box color=green fillcolor=green style=filled];
+    
+    "Intel"->"MMX"-> "SSE" -> "SSE2"->"SSE3"->"SSE4"->"SSE4.2"->"AVX"->"AVX2";
+    "AVX"->"IMCI"->"AVX2";
+    "AMD"->"3DNow!"-> "SSE4a" -> "SSE5";
+    "SSE3"->"SSSE3";
+    "MMX"->"3DNow!"[style=dotted];
+    "3DNow!"->"SSE"[style=dotted];
+    "SSE4"->"SSE4a"[style=dotted];
+    "SSE4.2"->"SSE5"[style=dotted];
+    "AVX"->"SSE5"[style=dotted];
 }
- 
