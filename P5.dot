@@ -1,0 +1,37 @@
+digraph P5_family{ 
+    label = "Микроархитектура Intel P5"
+    subgraph cluster_0{
+        label="Ядра Pentium и PentiumMMX";
+        "Pentium" [shape=box];
+        "Pentium MMX" [shape=box color=red fillcolor=red style=filled];
+        
+        "P5"
+        "P54C"
+        "P54CS";
+        "P55C" [color=red fillcolor=red style=filled];
+        
+        "Pentium" -> {"P5" "P54C" "P54CS"}[style=dotted shape=none];
+        "Pentium MMX" -> {"P55C"}[style=dotted shape=none];
+    }
+    
+    subgraph cluster_1{
+        label="Ядра Pentium OverDrive";
+        "P24T";
+        "P5T";
+        "P54CT";
+        "P54CTB" [color=red fillcolor=red style=filled];
+        "P24T" -> "P5T" -> "P54CT" -> "P54CTB"[style=dotted];
+    }
+    
+    subgraph cluster_2{
+        label="Ядра Mobile Module Connector (MMC-1)";
+        "Tillamook" [color=red fillcolor=red style=filled];
+    }
+    
+    //Основные связи
+    "P5"->"P54C"->"P54CS"->"P55C";
+    "P54CS"->"P5T";
+    "P54CS" -> "P54CT";
+    "P55C"->"P54CTB";
+    "P55C"->"Tillamook";
+}

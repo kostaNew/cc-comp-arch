@@ -1,0 +1,15 @@
+digraph P5_family{ 
+    label = "Векторные регистры"
+    subgraph intel{
+        label="Ядра Pentium и PentiumMMX";
+    }
+    
+    subgraph cluster_1{
+        label="Ядра Pentium OverDrive";
+    }
+    
+    subgraph cluster_2{
+        label="Ядра Mobile Module Connector (MMC-1)";
+    }
+}
+ 
